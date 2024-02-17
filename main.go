@@ -89,14 +89,14 @@ func main() {
 }
 
 func validateFlags(id int, space, file string) error {
+	if file == "" {
+		return fmt.Errorf("upmap: usage error: file is required")
+	}
 	if id == 0 {
 		return fmt.Errorf("upmap: usage error: id is required")
 	}
 	if space == "" {
 		return fmt.Errorf("upmap: usage error: space is required")
-	}
-	if file == "" {
-		return fmt.Errorf("upmap: usage error: file is required")
 	}
 	return nil
 }
