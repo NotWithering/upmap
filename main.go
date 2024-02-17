@@ -14,16 +14,18 @@ import (
 
 func main() {
 	var (
-		id    int
-		space string
-		file  string
-		now   bool
+		id     int
+		space  string
+		file   string
+		now    bool
+		silent bool
 	)
 
 	flag.IntVar(&id, "id", 0, "The id of the planet")
 	flag.StringVar(&space, "space", "", "The spaceship cookie")
 	flag.StringVar(&file, "file", "", "The map file")
 	flag.BoolVar(&now, "now", false, "Skip checking for update, just update it now")
+	flag.BoolVar(&silent, "silent", false, "Don't print that its updating")
 	flag.Parse()
 
 	if err := validateFlags(id, space, file); err != nil {
@@ -66,12 +68,16 @@ func main() {
 				return
 			}
 			if event.Op&fsnotify.Write == fsnotify.Write {
-				fmt.Print("updating...")
+				if !silent {
+					fmt.Print("updating...")
+				}
 				if err := update(pmapFile, id, space); err != nil {
 					fmt.Println(err)
 					continue
 				}
-				fmt.Println("updated")
+				if !silent {
+					fmt.Println("updated")
+				}
 			}
 		case err, ok := <-watcher.Errors:
 			if !ok {

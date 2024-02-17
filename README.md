@@ -19,6 +19,8 @@ Usage of upmap:
         The id of the planet
   -now
         Skip checking for update, just update it now
+  -silent
+        Don't print that its updating
   -space string
         The spaceship cookie
 ```
