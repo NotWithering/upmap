@@ -17,9 +17,10 @@ Usage of upmap:
         The map file
   -id int
         The id of the planet
+  -now
+        Skip checking for update, just update it now
   -space string
         The spaceship cookie
-
 ```
 
 ## Example

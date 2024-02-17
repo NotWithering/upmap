@@ -17,11 +17,13 @@ func main() {
 		id    int
 		space string
 		file  string
+		now   bool
 	)
 
 	flag.IntVar(&id, "id", 0, "The id of the planet")
 	flag.StringVar(&space, "space", "", "The spaceship cookie")
 	flag.StringVar(&file, "file", "", "The map file")
+	flag.BoolVar(&now, "now", false, "Skip checking for update, just update it now")
 	flag.Parse()
 
 	if err := validateFlags(id, space, file); err != nil {
@@ -35,6 +37,14 @@ func main() {
 		return
 	}
 	defer pmapFile.Close()
+
+	if now {
+		if err := update(pmapFile, id, space); err != nil {
+			fmt.Println(err)
+			return
+		}
+		return
+	}
 
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
