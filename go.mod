@@ -1,4 +1,4 @@
-module upmap
+module github.com/NotWithering/upmap
 
 go 1.21.6
 
