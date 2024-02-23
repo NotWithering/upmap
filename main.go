@@ -41,9 +41,15 @@ func main() {
 	defer pmapFile.Close()
 
 	if now {
+		if !silent {
+			fmt.Print("updating...")
+		}
 		if err := update(pmapFile, id, space); err != nil {
 			fmt.Println(err)
 			return
+		}
+		if !silent {
+			fmt.Println("updated")
 		}
 		return
 	}
