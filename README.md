@@ -1,7 +1,7 @@
 # ⚠️ DEPRECATED ⚠️
 This has been deprecated as of February 28th, 2024.
 This program is no longer needed due to the new creator for Planetarium.
-The new creator allows you to publish striaght from the creator.
+The new creator allows you to publish straight from the creator.
 ---
 
 # UPmap [![MIT License](https://img.shields.io/badge/License-MIT-a10b31)](https://github.com/NotWithering/upmap/blob/master/LICENSE)
